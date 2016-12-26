@@ -1,0 +1,17 @@
+<template name="roomsList">
+  <h2>Salons</h2>
+
+  <div class="addRoom">
+    <a href="{{pathFor 'roomSubmit'}}" class="btn btn-primary">Ajouter un salon</a>
+  </div>
+  
+  <div class="rooms">
+    {{#if rooms.count}}
+      {{#each rooms}}
+        {{> roomItem}}
+      {{/each}}
+    {{else}}
+        <p>Pas de salons enrengistrés</p>
+    {{/if}}
+  </div>
+</template>

@@ -1,0 +1,35 @@
+<template name="roomItem">
+  <div class="room">
+    <div class="room-content">
+      <h3>
+        <a href="/room/{{_id}}">{{name}}</a>
+        <a class="btn btn-danger deleteRoom" href="#">
+          <i class="fa fa-trash"></i>
+        </a>
+      </h3>
+      <h4>Sujet: {{topic}}</h4>
+
+      {{#if roomUsers.count}}
+        <h5>{{roomUsers.count}} participants:</h5>
+        <ul>
+        {{#each roomUser in roomUsers}}
+          <li>
+            {{roomUser.username}}
+            <form class="form deleteUser">
+              <input type="hidden" name="userId" value="{{roomUser._id}}"/>
+              <input type="hidden" name="roomId" value="{{_id}}"/>
+              <button type="submit" class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </form>
+          </li>
+        {{/each}}
+        </ul>
+
+        <a class="btn btn-primary addRoomUsers" href="{{pathFor 'roomAddUsers'}}">
+          Add users on this room
+        </a>
+      {{/if}}
+    </div>
+  </div>
+</template>

@@ -1,0 +1,14 @@
+<template name="postEdit">
+  <form class="main form page">
+    <div class="form-group {{errorClass 'title'}}">
+      <label class="control-label" for="title">Title</label>
+      <div class="controls">
+        <input name="title" id="title" type="text" value="{{title}}" placeholder="Nommez votre post" class="form-control"/>
+        <span class="help-block">{{errorMessage 'title'}}</span>
+      </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary submit"/>
+    <hr/>
+    <a class="btn btn-danger deletePost" href="#">Supprimer le post</a>
+  </form>
+</template>

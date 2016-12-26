@@ -1,0 +1,36 @@
+<template name="roomSubmit">
+    <form class="main form page">
+      <div class="form-group {{errorClass 'name'}}">
+        <label class="control-label" for="name">Nom du salon</label>
+        <div class="controls">
+            <input name="name" id="name" type="text" value="" placeholder="Nommez votre salon" class="form-control"/>
+            <span class="help-block">{{errorMessage 'name'}}</span>
+        </div>
+      </div>
+
+      <div class="form-group {{errorClass 'topic'}}">
+        <label class="control-label" for="topic">Sujet</label>
+        <!-- TODO: externalize topic list (not necessary yet) -->
+        <select name="topic" id="topic" class="form-control">
+          <option val="Banale">Banale</option>
+          <option val="Pluie et bon temps">Pluie et bon temps</option>
+          <option val="Foot">Foot</option>
+          <option val="Musique">Musique</option>
+          <option val="Gastronomie">Gastronomie</option>
+        </select>
+      </div>
+
+      <div class="form-group {{errorClass 'usersIds'}}">
+          <label class="control-label" for="username">Utilisateurs à ajouter pour ce salon</label>
+          <div class="controls">
+              <span class="help-block">{{errorMessage 'usersIds'}}</span>
+              <!-- TODO: Put a select multichoice -->
+              {{#each choices}}
+                <label for="{{_id}}">{{ username }}</label>
+                <input type = "checkbox" name = "usersIds" id = "usersIds" value = "{{_id}}"/>
+              {{/each}}
+          </div>
+        </div>
+      <input type="submit" value="Submit" class="btn btn-primary"/>
+    </form>
+</template>

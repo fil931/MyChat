@@ -1,0 +1,16 @@
+<template name="friendSubmit">
+    <form class="main form page">
+      <div class="form-group {{errorClass 'friendId'}}">
+          <label class="control-label" for="username">Utilisateurs</label>
+          <div class="controls">
+              <select name="friendId" id="friendId" class="form-control">
+              {{#each choices}}
+                <option value="{{_id}}">{{username}}</option>
+              {{/each}}
+              </select>
+              <span class="help-block">{{errorMessage 'friendId'}}</span>
+          </div>
+        </div>
+      <input type="submit" value="Submit" class="btn btn-primary"/>
+    </form>
+</template>

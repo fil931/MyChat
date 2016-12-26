@@ -1,0 +1,17 @@
+<template name="roomAddUsers">
+  <form class="main form roomAddUsers">
+    <div class="form-group {{errorClass 'usersIds'}}">
+        <label class="control-label" for="username">Utilisateurs à ajouter pour ce salon</label>
+        <div class="controls">
+            <span class="help-block">{{errorMessage 'usersIds'}}</span>
+            <!-- TODO: Put a select multichoice -->
+            {{#each choices}}
+              <label for="{{_id}}">{{ username }}</label>
+              <input type = "checkbox" name = "usersIds" id = "usersIds" value = "{{_id}}"/>
+            {{/each}}
+        </div>
+      </div>
+
+      <input type="submit" value="Submit" class="btn btn-primary"/>
+  </form>
+</template>

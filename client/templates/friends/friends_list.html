@@ -1,0 +1,17 @@
+<template name="friendsList">
+  <h2>Amis</h2>
+
+  <div class="addFriend">
+    <a href="{{pathFor 'friendSubmit'}}" class="btn btn-primary">Ajouter un ami</a>
+  </div>
+
+  <div class="friends">
+    {{#if friends.count}}
+      {{#each friends}}
+        {{> friendItem}}
+      {{/each}}
+    {{else}}
+        <p>Pas d'amis enrengistrés</p>
+    {{/if}}
+  </div>
+</template>
