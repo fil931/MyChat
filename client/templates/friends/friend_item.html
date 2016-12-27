@@ -1,9 +1,11 @@
 <template name="friendItem">
   <div class="friend">
     <div class="friend-content">
-      <h3><a href="/friend/{{_id}}">{{username}}</a></h3>
+      <h3><a href="{{pathFor 'friendPage'}}">{{username}}</a></h3>
 
-      <a class="btn btn-danger deleteFriend" href="#">Supprimer</a>
+      <a class="btn btn-danger deleteFriend" href="#">
+        <i class="fa fa-trash"></i>
+      </a>
     </div>
   </div>
 </template>

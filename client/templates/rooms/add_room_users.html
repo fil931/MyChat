@@ -1,0 +1,24 @@
+<template name="addRoomUsers">
+  <a href="{{pathFor 'roomsList'}}">Retour</a>
+  <form class="main form addRoomUsers">
+    <div class="form-group {{errorClass 'usersIds'}}">
+        <label class="control-label" for="username">Utilisateurs à ajouter pour ce salon</label>
+        <div class="controls">
+            <span class="help-block">{{errorMessage 'usersIds'}}</span>
+            <!-- TODO: Put a select multichoice -->
+            {{#if choices.count}}
+              {{#each choices}}
+                <label for="{{_id}}">{{ username }}</label>
+                <input type="checkbox" name="usersIds" id="usersIds" value ="{{_id}}"/>
+              {{/each}}
+            {{else}}
+                <p>Aucun utilisateur à ajouter.</p>
+            {{/if}}
+        </div>
+      </div>
+      <input type="hidden" name="roomId" value="{{_id}}"/>
+      {{#if choices.count}}
+        <input type="submit" value="Ajouter" class="btn btn-primary"/>
+      {{/if}}
+  </form>
+</template>

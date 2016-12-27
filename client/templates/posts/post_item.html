@@ -1,10 +1,14 @@
 <template name="postItem">
   <div class="post">
     <div class="post-content">
-      <h3><a href="/post/{{_id}}">{{title}}</a></h3>
+      <h3><a href="{{pathFor 'postPage'}}">{{title}}</a></h3>
       <p>
         submitted by {{author}}
-        {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
+        {{#if ownPost}}
+          <a class="btn btn-warning" href="{{pathFor 'postEdit'}}">
+            <i class="fa fa-pencil"></i>
+          </a>
+        {{/if}}
       </p>
     </div>
   </div>
