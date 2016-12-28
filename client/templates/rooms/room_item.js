@@ -11,6 +11,11 @@ Template.roomItem.helpers({
     }
 
     return roomUsers;
+  },
+  roomChats: function() {
+    return Chats.find({
+      roomId: this._id
+    });
   }
 });
 
@@ -46,5 +51,22 @@ Template.roomItem.events({
         }
       });
     }
+  },
+
+  'submit form.addRoomMessage': function(e) {
+    e.preventDefault();
+
+    var chat = {
+      roomId: this._id,
+      message: jQuery(e.target).find('[name=message]').val()
+    };
+
+    Meteor.call('chatInsert', chat, function(error) {
+      if (error) {
+        throwError(error.reason);
+      } else {
+        Router.go('roomsList');
+      }
+    });
   }
 });
