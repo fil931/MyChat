@@ -16,6 +16,9 @@ Template.roomItem.helpers({
     return Chats.find({
       roomId: this._id
     });
+  },
+  isYourMsg: function(userId) {
+    return userId === Meteor.userId();
   }
 });
 
@@ -65,8 +68,16 @@ Template.roomItem.events({
       if (error) {
         throwError(error.reason);
       } else {
-        Router.go('roomsList');
+        Router.go('roomPage', {_id: chat.roomId});
       }
+    });
+  },
+
+  'change .myFile': function(event, template) {
+    FS.Utility.eachFile(event, function(file) {
+      Images.insert(file, function (err, fileObj) {
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      });
     });
   }
 });

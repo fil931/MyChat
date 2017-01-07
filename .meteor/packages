@@ -30,3 +30,6 @@ audit-argument-checks
 check
 session
 fortawesome:fontawesome
+cfs:standard-packages
+cfs:gridfs
+cfs:filesystem

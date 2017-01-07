@@ -36,12 +36,24 @@
       <h3>Discussions</h3>
 
       <div class="chatList">
+        <!-- TODO:
+        See how to take user because with this solution if user is updated we don''t see difference here
+
+        If take this, do refact on the others colections (! IMPORTANT !)
+       -->
       {{#if roomChats.count}}
         {{#each roomChat in roomChats}}
-          <p>
-            {{roomChat.user.username}} : {{roomChat.message}}<br/>
-            <i>{{roomChat.createdAt}}</i>
-          </p>
+          {{#if isYourMsg roomChat.user._id }}
+            <p class="mine text-right">
+              {{roomChat.user.username}} : {{roomChat.message}}<br/>
+              <i>{{roomChat.createdAt}}</i>
+            </p>
+          {{else}}
+            <p class="other text-left">
+              {{roomChat.user.username}} : {{roomChat.message}}<br/>
+              <i>{{roomChat.createdAt}}</i>
+            </p>
+          {{/if}}
         {{/each}}
       {{else}}
         <p>Il n'y a pas encore de messages soyez le premier :P</p>
@@ -50,9 +62,10 @@
 
       <div>
         <!-- TODO: Add error message if empty input -->
-        <form class="form addRoomMessage">
+        <form class="form addRoomMessage text-center">
           <input type="hidden" name="roomId" value="{{_id}}"/>
           <input type="text" name="message" placeholder="Ecrivez quelque chose"/>
+          <input type="file" name="file" class="myFile"/>
           <button type="submit" class="btn btn-primary">
             <i class="fa fa-paper-plane"></i>
           </button>
